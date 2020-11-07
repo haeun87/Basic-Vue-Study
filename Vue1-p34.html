@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Vue Start</title>
+        <!-- 02-2 Hello Vue.js 출력하기(p34) -->
+    </head>
+    <body>
+        <!-- 'app' 내에 원하는 text 요소가 찍히는 가장 기초적인 작용 -->
+        <div id="app" name="app2">
+            {{message}}
+        </div>
+    </body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '#app', // 범위는 'app'이며 id 요소로 지정한다.
+        // el: 'div[name=app2]', => jquery랑 마찬가지로 name, class 등의 다른 기준 값으로 가져올 수도 있다.
+        data: {
+            message: 'Hello Vue.js!!'
+        }
+    });
+</script>
+</html>
