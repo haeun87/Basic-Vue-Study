@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>Vue Instance Lifecycle2</title>
+    <!-- 03-1 message 값을 변경한 라이프 사이클 실습 예제(p49) -->
+</head>
+
+<body>
+    <div id="app">
+        {{message}}
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+/*
+[총 8개 단계]
+1. beforeCreate : Vue 인스턴스 자체가 선언된 적이 없음. 따라서 속성인 data도 생성되지 않으며 app에도 반영되지 않음.
+2. created: Vue 인스턴스가 선언되어 data값은 할당되지만 app에는 미반영 상태.
+3. beforeMount: 데이터 반영 직전의 이벤트를 trigger할 수 있는 상태. 데이터 상태는 2. created와 유사 또는 같다.
+4. mounted: 데이터 반영 직후의 이벤트를 trigger할 수 있는 상태.
+5. beforeUpdate: 데이터가 변동하는 시점에 해당.(1. beforeCreate와 마찬가지로 미반영. 데이터 갱신과는 별개로 이 시점의 이벤트-$watch로써 특정 이벤트 등을 trigger할 수 있음.)
+6. updated: 신규 데이터가 완전히 대체되어 4. mounted 상태와 가시적인 차이점이 보이지 않는 상태.(변경 이력 확인 제외. 이 단계에서는 $watch와 $computed-'갱신 조건부 이벤트'가 가능하다.) 
+7. beforeDestroy: Vue 인스턴스가 반영된 부분(컴포넌트, 디렉티브 등)이 전부 해제. 인스턴스 사용의 비활성화.
+8. destroy: Vue 인스턴스조차 소멸되어 완전 초기화된 상태.
+*/
+
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Vue의 Lifecycle을 알아보자!!'
+        },
+        beforeCreate: function () {
+            console.log("beforeCreate");
+            console.log('message = ' + this.message);// undefined
+            console.log('div_text = ' + document.getElementById("app").innerText); //unmounted
+        },
+        created: function () {
+            console.log("created");
+            console.log('message = ' + this.message); //defined
+            console.log('div_text = ' + document.getElementById("app").innerText); // unmounted
+        },      
+        mounted: function () {
+            console.log("mounted");
+            console.log('message = ' + this.message);// defined
+            console.log('div_text = ' + document.getElementById("app").innerText); //mounted
+            this.message = '이 메세지는 수정되었음!!';
+        },
+        updated: function () {  // update가 존재하므로 Vue2와는 달리 실행되는 함수
+            console.log("updated");
+            console.log('message = ' + this.message);
+            console.log('div_text = ' + document.getElementById("app").innerText);
+        }
+    });
+
+</script>
+
+</html>

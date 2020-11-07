@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Vue Instance Lifecycle1</title>
+        <!-- 03-1 라이프 사이클 실습 예제(p47) -->
+    </head>
+    <body>
+        <div id="app">
+            {{message}}
+        </div>
+    </body>
+ <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Vue의 Lifecycle을 알아보자!!'
+        },
+        beforeCreate: function(){
+            console.log("beforeCreate");
+        },
+        created: function(){
+            console.log("created");
+        },
+        mounted: function(){
+            console.log("mounted");
+        },
+        updated: function(){
+            console.log("updated"); // 수정이 존재하지 않아 드러나지 않는다.
+        }
+    });
+
+</script>   
+</html>

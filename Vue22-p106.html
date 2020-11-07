@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Directive2 : button Action</title>
+    <!-- 05-1 v-on 디렉티브로 이벤트 처리, 인자 전달, 돔 이벤트 접근(p106~p107) -->
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="clickBtn">클릭A</button>
+        <button v-on:click="clickBtn2(10)">클릭B</button>
+        <button v-on:click="clickBtn3">클릭C</button>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        methods: {
+            clickBtn: function () {// 일반 함수
+                return alert('clicked');
+            },
+            clickBtn2: function(num){ //인자 넘겨 받기
+                alert('clicked ' + num + ' times');
+            },
+            clickBtn3: function (event) { //이벤트 객체 접근
+                console.log(event);
+            }
+        }
+    });
+
+</script>
+
+</html>

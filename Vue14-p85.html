@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue Router Example3</title>
+        <!-- 04-1 네임드 뷰 구현하기(p85) -->
+    </head>
+
+    <body>
+        <div id="app">
+            <router-view name="header"></router-view><!-- named -->
+            <router-view></router-view> <!-- default -->
+            <router-view name="footer"></router-view><!-- named -->
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script type="text/javascript">
+        var Body = {
+            template:
+                '<div>This is Body</div>'
+        };
+        var Header = {
+            template:
+                '<div>This is Header</div>'
+        };
+        var Footer = {
+                template:
+                    '<div>This is Footer</div>'
+        };
+
+        var routes = [
+            {
+                path: '/',
+                components: {
+                    default : Body,
+                    header: Header,
+                    footer: Footer
+                }
+            }
+        ];
+
+        var router = new VueRouter({
+            // mode: 'history', (실제 파일 또는 주소가 있어야만 해당됨)
+            routes
+        });
+
+        var app = new Vue({
+            router
+        }).$mount('#app');
+    </script>
+
+</html>

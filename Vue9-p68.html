@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>Vue Event1</title>
+    <!-- 03-3 이벤틀르 발생시키고 수신하기(p68) -->
+</head>
+
+<body>
+    <div id="app">
+        <child-component v-on:show-log="printText"></child-component> <!-- 3차 실행 -->
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    Vue.component('child-component', {
+        template: '<button v-on:click="showLog">show</button>', // 1차실행
+        methods: {
+            showLog: function(){
+                // console.log("this is own methods!!"); //개별 메소드 호출
+                this.$emit('show-log'); // 부모 메소드 호출(2차 실행)
+            }
+        }
+    });
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue! passed from Parent Component'
+        }
+    });
+</script>
+
+</html>

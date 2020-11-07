@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue Router Example1</title>
+        <!-- 04-1 뷰 라우터 실습(p78) -->
+    </head>
+
+    <body>
+        <div id="app">
+            <h1>뷰 라우터 예제</h1>
+            <p>
+                <router-link to="/main">Main 컴포넌트로 이동</router-link><!-- 일종의 라우터 전환 스위치 역할 -->
+                <router-link to="/login">Login 컴포넌트로 이동</router-link>
+            </p>
+            <router-view></router-view><!-- 컴포넌트가 나타나는 영역 -->
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script type="text/javascript">
+        var Main = { template : '<div>메인 화면입니다</div>'};
+        var Login = { template: '<div>로그인 화면입니다</div>' };
+
+        var routes = [
+            {path: '/main', component: Main},
+            { path: '/login', component: Login}           
+        ];
+
+        var router = new VueRouter({
+            // mode: 'history', (실제 파일 또는 주소가 있어야만 해당됨)
+            routes
+        });
+
+        var app = new Vue({
+            router
+        }).$mount('#app');
+    </script>
+
+</html>

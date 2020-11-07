@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Templated Method2</title>
+    <!-- 05-1 computed 속성과 methods 속성의 차이점(p109~p110) -->
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ message }}</p>
+        <input type="button" v-on:click="reverseMsg" value="문자열 역순">
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+/*
+ - computed는 캐싱을 수반(데이터 변경시에만 다시 연산함), methods는 캐싱 안함(따라서 매번 연산함)
+ - 복잡한 연산을 반복 수행해서 화면에 나타내야 한다면 computed 속성을 이용하는 것이 효율적(같은 건 두번 계산 안함)
+*/
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello, Vue.js!'
+        },
+        // computed : {
+        methods: {
+            reverseMsg: function () {
+                this.message = this.message.split('').reverse().join('');
+                return this.message; 
+            }
+        }
+    });
+
+</script>
+
+</html>

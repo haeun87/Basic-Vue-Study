@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue & javascript1</title>
+    <!-- 05-1 자바스크립트 표현식 예제(p101) -->
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ message }}</p>
+        <p>{{ message + "!!!" }}</p>
+        <p>{{ message.split('').reverse().join('') }}</p>
+        <!-- 자바스크립트식의 일부 표현 가능! -->
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!'
+        }
+    });
+
+</script>
+
+</html>

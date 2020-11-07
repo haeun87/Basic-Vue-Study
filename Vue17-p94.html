@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue http 통신2</title>
+    <!-- 04-2 액시오스로 데이터 받아오기(p94) -->
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="getData">프레임워크 목록 가져오기</button>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+
+    var app = new Vue({
+        el: '#app',
+        methods: {
+            getData: function () {
+                axios.get('https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json')
+                    .then(function (response) {
+                        console.log(response); // JSON X, 객체 O
+                        console.log(response.data); //JSON 변환 필요 없이 바로 접근 가능!
+                    });
+            }
+        }
+    });
+</script>
+
+</html>

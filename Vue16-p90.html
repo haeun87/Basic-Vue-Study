@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue http 통신1</title>
+        <!-- 04-2 뷰 리소스로 데이터 받아오기(p90) -->
+    </head>
+
+    <body>
+        <div id="app">
+            <button v-on:click = "getData">프레임워크 목록 가져오기</button>
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.js"></script>
+    <script type="text/javascript">
+
+        var app = new Vue({
+            el: '#app',
+            methods:{
+                getData: function(){
+                    this.$http.get('https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json')
+                    .then(function(response){
+                        console.log(response);
+                        console.log(JSON.parse(response.bodyText));// String -> JSON 변환 -> JSON의 요소 확인(string)
+                    });
+                }
+            }
+        });
+    </script>
+
+</html>

@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>Vue Component Registration2</title>
+    <!-- 03-2 인스턴스 유효 범위와 지역 컴포넌트, 전역 컴포넌트 간 관계 확인하기(p58) -->
+</head>
+
+<body>
+    <div id="app">
+        <h3>첫 번째 인스턴스 영역</h3>
+        <!--등록한 my-component가 최종적으로 변환된 모습-->
+        <my-global-component></my-global-component>
+        <my-local-component></my-local-component>
+    </div>
+    <div id="app2">
+        <h3>두 번째 인스턴스 영역</h3>
+        <!--등록한 my-component가 최종적으로 변환된 모습-->
+        <my-global-component></my-global-component>
+        <my-local-component></my-local-component> <!-- 지역 변수라 화면상 나타나지 않음!!-->
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    Vue.component('my-global-component', {
+        template: '<div><strong>전역</strong> 컴포넌트가 등록되었습니다!</div>'
+    }); // 모든 Vue에 대하여 명시적인 포함이 선언된 상태
+    var cmp = {
+        //컴포넌트 내용
+        template: '<div><em>지역</em> 컴포넌트가 등록되었습니다!</div>'
+    };
+    new Vue({
+        el: '#app',
+        components: {
+            'my-local-component': cmp // 로컬 컴포넌트는 명시적인 표현이 필요하다.
+        }
+    });
+    new Vue({
+        el: '#app2'
+    });
+</script>
+
+</html>

@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>Vue Event2 - Event Bus</title>
+    <!-- 03-3 이벤트 버스 구현하기(p72) -->
+</head>
+
+<body>
+    <div id="app">
+        <child-component></child-component> 
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    var number = 0
+    var eventBus = new Vue(); 
+    Vue.component('child-component', {
+        template: '<div>하위 컴포넌트 영역입니다.<button v-on:click="showLog">show</button></div>',
+        methods: {
+            showLog: function () {
+                number += 100;
+                eventBus.$emit('triggerEventBus', number); // 보내는 주체
+            }
+        }
+    });
+    var app = new Vue({
+        el: '#app',
+        created: function(){
+            eventBus.$on('triggerEventBus', function(value){
+                console.log("이벤트를 전달받음. 전달받은 값 : ", value);// 받는 주체이자 최종 출력 상태
+            });
+        }
+    });
+</script>
+
+</html>

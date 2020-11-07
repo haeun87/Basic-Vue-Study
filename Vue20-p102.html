@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue & javascript2</title>
+    <!-- 05-1 자바스크립트 표현식 사용 시 주의할 점( p102) -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- <p>{{ var a = 10; }}</p> (X, 선언문은 사용 불가) -->
+        <!-- <p>{{ if (true) {return 100} }}</p> (X, 분기 구문은 수행 불가)-->
+        <p>{{ true ? 100 : 0 }}</p>
+        <!-- <p>{{ message.split('').reverse().join('') }}</p> (O, 실행 가능하지만 가급적 인스턴스 안에서 수행하는 것을 권장) -->
+        <p>{{reversedMessage }}</p>  
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        computed: {
+            reversedMessage: function(){
+                return this.message.split('').reverse().join('');
+            }
+        }
+    });
+
+</script>
+
+</html>

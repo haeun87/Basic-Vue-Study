@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Templated Method3</title>
+    <!-- 05-1 watch 속성 예제(p111) -->
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="message">
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello, Vue.js!'
+        },
+        watch: {//상태 변경을 감시한다는 의미에서 watch임(1자 칠 때마다 변경함)
+            message: function (data) {
+                console.log("message의 값이 바뀝니다 : ", data); //변화할 때마다 수행되는 이벤트
+            }
+        }
+    });
+
+</script>
+
+</html>

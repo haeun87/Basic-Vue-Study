@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <title>Vue property passing - good case</title>
+    <!-- 03-3 props 속성을 사용한 데이터 전달 예제(p65) -->
+</head>
+
+<body>
+    <div id="app">
+        <child-component v-bind:propsdata="message"></child-component>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    Vue.component('child-component',{
+        props: ['propsdata'], // 부모의 자산(data)를 자식이 끌어와 묶음. 단, props에 명시된 수만큼만 bind된다.
+        template: '<p>{{ propsdata }}</p>'
+    });
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue! passed from Parent Component'
+        }
+    });
+</script>
+
+</html>
