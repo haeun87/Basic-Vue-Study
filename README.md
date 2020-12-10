@@ -7,7 +7,7 @@
 
 # 추가 설명
  - 후반부의 실전 앱 작성하는 부분은 별개의 repository로 작성
-  => <a href="https://github.com/haeun87/todoProject">toDo Project(작성 중)</a>
+  => <a href="https://github.com/haeun87/vue-todoProject">toDo Project</a>
  - 마지막 code는 vue simple-pack 로 작성된 프로젝트 코드입니다.
  - (참고) 현재는 교재에 포함된 내용까지 반영된 중간 완성본이며 학습 진도에 따라 주기적으로 업데이트될 예정입니다.
  
